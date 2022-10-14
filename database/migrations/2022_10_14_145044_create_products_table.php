@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('url_image')->nullable();
             $table->float('price');
             $table->string('discount')->nullable();
-            $table->foreignUuid('category_id')->constrained('category');
+            $table->foreignUuid('category')->constrained('category');
             $table->timestamps();
         });
     }
