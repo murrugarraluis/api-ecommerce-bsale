@@ -20,4 +20,5 @@ use App\Http\Controllers\API\V1\{
 Route::prefix('v1/')->group(function () {
     Route::get('categories', [CategoryController::class, 'index']);
     Route::get('categories/{category}', [CategoryController::class, 'show']);
+    Route::get('categories/{category}/products', [CategoryController::class, 'show_products']);
 });
