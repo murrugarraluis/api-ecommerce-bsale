@@ -17,11 +17,11 @@
     DB_USERNAME=root
     DB_PASSWORD=
    ```
-4. Levantar el servidor php
+5. Levantar el servidor php
     ```
    php artisan serve
     ```
-5. Link del servicio api
+6. Link del servicio api
    ```
    http://127.0.0.1:8000/
    ```
