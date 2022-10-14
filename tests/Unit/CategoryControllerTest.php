@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Models\Category;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -10,7 +11,9 @@ class CategoryControllerTest extends TestCase
 {
     use DatabaseMigrations;
     use RefreshDatabase;
+
     private string $resource = 'categories';
+
     public function test_index()
     {
         $this->withoutExceptionHandling();
@@ -23,5 +26,23 @@ class CategoryControllerTest extends TestCase
                     'name'
                 ]
             ]]);
+    }
+
+//    public function test_show()
+//    {
+//        $this->withoutExceptionHandling();
+//        $category = Category::factory()->create(["name" => 'Category Test']);
+//        $response = $this->getJson("api/v1/$this->resource/$category->id");
+//        $response->assertStatus(200)
+//            ->assertJsonStructure(['data' => [
+//                'id',
+//                'name'
+//            ]]);
+//    }
+    public function test_show_not_found()
+    {
+        $response = $this->getJson("api/v1/$this->resource/100");
+        $response->assertStatus(404)
+            ->assertExactJson(['message' => "Unable to locate the category you requested."]);
     }
 }
